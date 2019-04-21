@@ -1,3 +1,6 @@
 .idea
+.vscode
+.nyc_output
+coverage
 components
 build
