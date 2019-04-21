@@ -1,16 +1,20 @@
 {
-  "name": "json-pointer",
-  "description": "Some utilities for JSON pointers described by RFC 6901",
+  "name": "vue-json-pointer",
+  "description": "Basic fork of json-pointer that works with Vue reactivity system",
   "version": "0.6.0",
-  "author": "Manuel Stofer <manuel@takimata.ch>",
+  "author": "Nicolas Martinez <nicomtnz@gmail.com>",
+  "contributors": [
+    "Manuel Stofer <manuel@takimata.ch>"
+  ],
   "license": "MIT",
   "dependencies": {
-    "foreach": "^2.0.4"
+    "foreach": "^2.0.4",
+    "vue": "^2.6.10"
   },
-  "homepage": "https://github.com/manuelstofer/json-pointer",
+  "homepage": "https://github.com/nicomtinz/vue-json-pointer",
   "repository": {
     "type": "git",
-    "url": "git://github.com/manuelstofer/json-pointer.git"
+    "url": "https://github.com/nicomtinz/vue-json-pointer.git"
   },
   "devDependencies": {
     "chai": "^1.9.1",

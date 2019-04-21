@@ -1,12 +1,8 @@
-# json-pointer
+# vue-json-pointer
 
-[![Build Status](https://travis-ci.org/manuelstofer/json-pointer.svg?branch=master)](https://travis-ci.org/manuelstofer/json-pointer)
-[![npm version](https://badge.fury.io/js/json-pointer.svg)](https://www.npmjs.com/package/json-pointer)
-[![Coverage Status](https://coveralls.io/repos/github/manuelstofer/json-pointer/badge.svg?branch=master&service=github)](https://coveralls.io/github/manuelstofer/json-pointer?branch=master)
+Basic fork of [json-pointer](https://github.com/manuelstofer/json-pointer) using **Vue.set** and **Vue.delete** to work with Vue reactivity system.
+*If you're not using Vue is safer to use the [original library](https://github.com/manuelstofer/json-pointer)*
 
-Some utilities for JSON pointers described by RFC 6901
-
-Provides some additional stuff i needed but is not included in [node-jsonpointer](https://github.com/janl/node-jsonpointer)
 
 
 ## Installation
@@ -14,14 +10,14 @@ Provides some additional stuff i needed but is not included in [node-jsonpointer
 [node.js](http://nodejs.org)
 
 ```bash
-$ npm install json-pointer
+$ npm install vue-json-pointer
 ```
 
 
 ## API
 
 ```Javascript
-var pointer = require('json-pointer');
+var pointer = require('vue-json-pointer');
 ```
 
 
@@ -32,12 +28,16 @@ Looks up a JSON pointer in an object.
 Array of reference tokens, e.g. returned by api.parse, can be passed as a pointer to .get, .set and .remove methods.
 
 ```Javascript
-var obj = {
-    example: {
-        bla: 'hello'
+...
+state: {
+    obj: {
+        example: {
+            bla: 'hello'
+        }
     }
-};
-pointer.get(obj, '/example/bla');
+}
+...
+pointer.get(state.obj, '/example/bla');
 ```
 
 
@@ -46,8 +46,12 @@ pointer.get(obj, '/example/bla');
 Sets a new value on object at the location described by pointer.
 
 ```Javascript
-var obj = {};
-pointer.set(obj, '/example/bla', 'hello');
+...
+state: {
+    obj: {}
+}
+...
+pointer.set(state.obj, '/example/bla', 'hello');
 ```
 
 
@@ -56,11 +60,15 @@ pointer.set(obj, '/example/bla', 'hello');
 Removes an attribute of object referenced by pointer.
 
 ```Javascript
-var obj = {
-    example: 'hello'
-};
-pointer.remove(obj, '/example');
-// obj -> {}
+...
+state: {
+    obj: {
+        example: 'hello'
+    }
+}
+...
+pointer.remove(state.obj, '/example');
+// state.obj -> {}
 ```
 
 
@@ -72,7 +80,7 @@ Creates a dictionary object (pointer -> value).
 var obj = {
     hello: {bla: 'example'}
 };
-pointer.dict(obj);
+pointer.dict(state.obj);
 
 // Returns:
 // {

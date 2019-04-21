@@ -1,5 +1,6 @@
 'use strict';
 
+var Vue = require('vue');
 var each = require('foreach');
 module.exports = api;
 
@@ -82,9 +83,9 @@ api.set = function set (obj, pointer, value) {
 
         if (!(tok in obj)) {
             if (nextTok.match(/^(\d+|-)$/)) {
-                obj[tok] = [];
+                Vue.set(obj, tok, []);
             } else {
-                obj[tok] = {};
+                Vue.set(obj, tok, {});
             }
         }
         obj = obj[tok];
@@ -92,7 +93,7 @@ api.set = function set (obj, pointer, value) {
     if (nextTok === '-' && Array.isArray(obj)) {
       nextTok = obj.length;
     }
-    obj[nextTok] = value;
+    Vue.set(obj, nextTok, value);
     return this;
 };
 
@@ -115,10 +116,9 @@ api.remove = function (obj, pointer) {
       if (finalToken === '' && isNaN(index)) {
         throw new Error('Invalid array index: "' + finalToken + '"');
       }
-
-      Array.prototype.splice.call(parent, index, 1);
+      Vue.delete(parent, index);
     } else {
-      delete parent[finalToken];
+      Vue.delete(parent, finalToken);
     }
 };
 
