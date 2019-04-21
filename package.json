@@ -1,7 +1,7 @@
 {
   "name": "vue-json-pointer",
   "description": "Basic fork of json-pointer that works with Vue reactivity system",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "author": "Nicolas Martinez <nicomtinz@gmail.com>",
   "contributors": [
     "Manuel Stofer <manuel@takimata.ch>"

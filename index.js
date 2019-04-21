@@ -94,7 +94,7 @@ api.set = function set (obj, pointer, value) {
     if (nextTok === '-' && Array.isArray(obj)) {
       nextTok = obj.length;
     }
-    Vue.set(obj, nextTok, value);
+    set(obj, nextTok, value);
     return this;
 };
 
