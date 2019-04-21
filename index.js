@@ -67,6 +67,7 @@ api.get = function get (obj, pointer) {
  * @param value
  */
 api.set = function set (obj, pointer, value) {
+    var set =  Vue.default ? Vue.default.set : Vue.set;
     var refTokens = Array.isArray(pointer) ? pointer : api.parse(pointer),
       nextTok = refTokens[0];
 
@@ -83,9 +84,9 @@ api.set = function set (obj, pointer, value) {
 
         if (!(tok in obj)) {
             if (nextTok.match(/^(\d+|-)$/)) {
-                Vue.set(obj, tok, []);
+                set(obj, tok, []);
             } else {
-                Vue.set(obj, tok, {});
+                set(obj, tok, {});
             }
         }
         obj = obj[tok];
@@ -104,6 +105,7 @@ api.set = function set (obj, pointer, value) {
  * @param {String|Array} pointer
  */
 api.remove = function (obj, pointer) {
+    var del =  Vue.default ? Vue.default.delete : Vue.delete;
     var refTokens = Array.isArray(pointer) ? pointer : api.parse(pointer);
     var finalToken = refTokens[refTokens.length -1];
     if (finalToken === undefined) {
@@ -116,9 +118,9 @@ api.remove = function (obj, pointer) {
       if (finalToken === '' && isNaN(index)) {
         throw new Error('Invalid array index: "' + finalToken + '"');
       }
-      Vue.delete(parent, index);
+      del(parent, index);
     } else {
-      Vue.delete(parent, finalToken);
+      del(parent, finalToken);
     }
 };
 
