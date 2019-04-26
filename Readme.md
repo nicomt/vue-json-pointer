@@ -1,7 +1,9 @@
 # vue-json-pointer
 
-Basic fork of [json-pointer](https://github.com/manuelstofer/json-pointer) using **Vue.set** and **Vue.delete** to work with Vue reactivity system.
-*If you're not using Vue is safer to use the [original library](https://github.com/manuelstofer/json-pointer)*
+Basic fork of [json-pointer](https://github.com/manuelstofer/json-pointer) using **Vue.set** and **Vue.delete** to trigger Vue's reactivity system.
+
+**Note:**
+*If you're not using Vue, is safer to use the [original library](https://github.com/manuelstofer/json-pointer)*
 
 
 
@@ -17,7 +19,7 @@ $ npm install vue-json-pointer
 ## API
 
 ```Javascript
-var pointer = require('vue-json-pointer');
+import pointer from 'vue-json-pointer';
 ```
 
 
